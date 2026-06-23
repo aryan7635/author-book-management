@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven'
+        jdk 'JDK17'
+    }
+
     stages {
 
         stage('Checkout') {
@@ -26,16 +31,6 @@ pipeline {
             steps {
                 sh 'mvn package'
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'BUILD SUCCESS'
-        }
-
-        failure {
-            echo 'BUILD FAILED'
         }
     }
 }
