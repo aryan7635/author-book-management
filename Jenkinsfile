@@ -29,5 +29,11 @@ pipeline {
                 sh './mvnw package'
             }
         }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t author-book-management:latest .'
+            }
+        }
     }
 }
